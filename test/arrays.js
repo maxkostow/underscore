@@ -141,6 +141,10 @@ $(document).ready(function() {
     var stooges = {moe: 30, larry: 40, curly: 50};
     ok(_.isEqual(_.object(_.pairs(stooges)), stooges), 'an object converted to pairs and back to an object');
 
+    result = _.object(['one', 'two', 'three']);
+    shouldBe = {one: undefined, two: undefined, three: undefined};
+    ok(_.isEqual(result, shouldBe), 'create an object from only an array of keys');
+
     ok(_.isEqual(_.object(null), {}), 'handles nulls');
   });
 

@@ -508,8 +508,10 @@
     for (var i = 0, l = list.length; i < l; i++) {
       if (values) {
         result[list[i]] = values[i];
-      } else {
+      } else if (_.isArray(list[i]) || _.isObject(list[i])) {
         result[list[i][0]] = list[i][1];
+      } else {
+        result[list[i]] = void 0;
       }
     }
     return result;
