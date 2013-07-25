@@ -216,6 +216,13 @@ $(document).ready(function() {
     strictEqual(_.result(null, 'x'), undefined);
   });
 
+  test('result calls with context if passed in', function() {
+    var obj = { f: function() { return this; }, p: 1 }, ctx = new function(){};
+    strictEqual(_.result(obj, 'f'), obj);
+    strictEqual(_.result(obj, 'f', ctx), ctx);
+    strictEqual(_.result(obj, 'p'), 1);
+  });
+
   test('_.templateSettings.variable', function() {
     var s = '<%=data.x%>';
     var data = {x: 'x'};

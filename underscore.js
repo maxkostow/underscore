@@ -1086,11 +1086,11 @@
   });
 
   // If the value of the named `property` is a function then invoke it with the
-  // `object` as context; otherwise, return it.
-  _.result = function(object, property) {
+  // `object` as context or the optional third parameter `context`; otherwise, return it.
+  _.result = function(object, property, context) {
     if (object == null) return void 0;
     var value = object[property];
-    return _.isFunction(value) ? value.call(object) : value;
+    return _.isFunction(value) ? value.call(arguments.length > 2 ? context : object) : value;
   };
 
   // Add your own custom functions to the Underscore object.
